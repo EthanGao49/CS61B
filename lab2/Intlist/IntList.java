@@ -1,3 +1,4 @@
+import javax.lang.model.type.NullType;
 import java.util.Formatter;
 
 /**
@@ -82,7 +83,12 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList p = A;
+        while(p.rest != null){
+            p = p.rest;
+        }
+        p.rest= B;
+        return A;
     }
 
     /**
@@ -91,7 +97,17 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList p = new IntList(A.first, null);
+        IntList p_iter = A.rest;
+        IntList return_p = p;
+        while(p_iter != null){
+            IntList new_node = new IntList(p_iter.first, null);
+            p.rest = new_node;
+            p = p.rest;
+            p_iter = p_iter.rest;
+        }
+        p.rest = B;
+        return return_p;
     }
 
 
